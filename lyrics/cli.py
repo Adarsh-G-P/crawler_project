@@ -37,26 +37,26 @@ def parse():
     return args
 
 def handle_listartists(args):
-    db = models.init_db(web.app, "postgresql:///lyrics")
+    db = models.init_db(web.app, "postgresql:///students")
     with web.app.app_context():
         artists = db.session.execute(db.select(models.Artist)).scalars()
         for idx,artist in enumerate(artists, start=1):
             print (f"{idx}. {artist.name}")
 
 def handle_initdb(args):
-    db = models.init_db(web.app, "postgresql:///lyrics")
+    db = models.init_db(web.app, "postgresql:///students")
     with web.app.app_context():
         db.drop_all()
         db.create_all()
 
 def handle_crawl(args):
-    db = models.init_db(web.app, "postgresql:///lyrics")
+    db = models.init_db(web.app, "postgresql:///students")
     crawler.crawl("https://www.songlyrics.com/top-artists-lyrics.html", 
                     args.nartists, 
                     args.ntracks)
 
 def handle_test(args):
-    engine = sa.create_engine("postgresql:///lyrics", echo=True)
+    engine = sa.create_engine("postgresql:///students", echo=True)
     query= sa.select(models.Artists)
     with Session(engine) as sess:
         results = sess.scalars(query)
@@ -66,7 +66,7 @@ def handle_test(args):
                 print("   ", song.name)
 
 def handle_web(args):
-    db = models.init_db(web.app, "postgresql:///lyrics")
+    db = models.init_db(web.app, "postgresql:///students")
     web.app.run(host="0.0.0.0", port=8000, debug=True)
 
 
