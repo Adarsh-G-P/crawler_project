@@ -1,7 +1,7 @@
 import sqlalchemy as sa
 from sqlalchemy.orm import Session
 
-engine = sa.create_engine("postgresql:///lyrics", echo=True)  
+engine = sa.create_engine("postgresql:///students", echo=True)  
 
 statement = sa.text("SELECT id,name FROM artists WHERE name = :a")
 

@@ -1,7 +1,7 @@
 import sqlalchemy as sa
 
 
-engine = sa.create_engine("postgresql:///lyrics", echo=True)  
+engine = sa.create_engine("postgresql:///students", echo=True)  
 
 conn = engine.connect()
 result = conn.execute(sa.text("SELECT * from artists"))
