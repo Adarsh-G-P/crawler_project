@@ -28,9 +28,22 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div class="bg-img">
+      <div class="container">
+        <div class="topnav">
+          <a href="#home" onClick={handleHomeClick}>Home</a>
+          <a href="#news">News</a>
+          <a href="#contact">Contact</a>
+          <a href="#about">About</a>
+        </div>
+      </div>
+    </div>
+    
+    
     <div class="container">
-    <h1 class="display-1"> Welcome to our Lyrics server</h1>
-    <div id="root"></div>
+      <h1 className="display-1" >Welcome to our Lyrics server</h1>
+    <!-- <h1 class="display-1"> Welcome to our Lyrics server</h1> -->
+      <div id="root"></div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -41,6 +54,7 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
       -->
-        </div>
+       </div>
+    </div>
   </body>
 </html>
