@@ -28,7 +28,7 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div class="bg-img">
+    <!-- <div class="bg-img">
       <div class="container">
         <div class="topnav">
           <a href="#home">Home</a>
@@ -38,10 +38,38 @@
           
         </div>
       </div>
+    </div> -->
+    
+    
+    <div class="navbar">
+      <a href="#home" class="active">HOME</a>
+      <div class="dropdown">
+        <button class="dropbtn">TOP ARTISTS</button>
+        <div class="dropdown-content">
+          <a href="#">Drake</a>
+          <a href="#">Rihana</a>
+          <a href="#">Eminem</a>
+          <a href="#">Shakira</a>
+          <a href="#">Katy Perry</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">TRENDING TRACKS</button>
+        <div class="dropdown-content">
+          <a href="#">Worst Behavior</a>
+          <a href="#">Diamonds</a>
+          <a href="#">Without Me</a>
+          <a href="#">Waka waka</a>
+          <a href="#">Firework</a>
+        </div>
+      </div>
+      <a href="#contact">CONTACT</a>
     </div>
     
     
+    
     <div class="container">
+      
       <h1 className="display-1" >Welcome to our Lyrics server</h1>
     <!-- <h1 class="display-1"> Welcome to our Lyrics server</h1> -->
       <div id="root"></div>
