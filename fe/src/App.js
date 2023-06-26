@@ -1,9 +1,20 @@
+
+
 import logo from './logo.svg';
 import './App.css';
 
+//usestate =define the state variables artist, track, lyrics will hold the data fetched from the backend
+//useeffect thelist of artists from backend 
 import { useState, useRef, useEffect } from 'react';
 
 import axios, * as others from 'axios';
+
+
+//App component interacts with the backend API by making HTTP requests to fetch
+// artists, tracks, and lyrics based on user interactions. 
+//The fetched data is then displayed in the user interface using JSX and CSS styles.
+
+
 
 function App() {
     const [artists, setArtists] = useState([]);
@@ -19,7 +30,10 @@ function App() {
                 setLyrics([])
             });
     }, []);
-
+//This function is triggered when an artist link is clicked.
+// makes an HTTP GET request to the /api/v1/artist/{artistId} endpoint 
+//to fetch the tracks of the selected artist
+//The fetched tracks are set in the tracks state
 
     function onClickHandlerTracks(e) {
         e.preventDefault();
@@ -31,6 +45,8 @@ function App() {
             });
     }
 
+//fetch the lyrics of the selected track. 
+//The fetched lyrics are set in the lyrics state.
 
     function onClickHandlerLyrics(e) {
         e.preventDefault()
@@ -44,6 +60,13 @@ function App() {
     }
 
 
+        //The fetched artists are rendered as an ordered list (<ol>) 
+        //with each artist name as a list item (<li>). 
+        //Each artist name is a link that triggers the onClickHandlerTracks function when clicked.
+
+        //The fetched tracks are rendered as an unordered list (<ul>) 
+        //with each track name as a list item (<li>). 
+        //Each track name is a link that triggers the onClickHandlerLyrics function when clicked.
     return (
         <div className="row">
             <div className="col">
@@ -59,6 +82,8 @@ function App() {
                     </li>))}
                 </ol>
             </div>
+            
+
             <div className="col">
                 <h2> Tracks </h2>
                 <ul>
@@ -72,6 +97,8 @@ function App() {
                     </li>))}
                 </ul>
             </div>
+
+
             <div className="col">
                 <h2> Lyrics </h2>
                 {lyrics.map(((lyric, idx) => 
@@ -84,49 +111,8 @@ function App() {
         </div>
     );
 }
-
+//The fetched lyrics are rendered as a <div> for each lyric item.
+// The name of the track is displayed as a separate <div>, and the lyrics are displayed
+// as text within a <div> with the whiteSpace CSS property set to 'pre-line' to preserve line breaks.
 export default App;
 
-
-// import logo from './logo.svg';
-// import './App.css';
-
-// import { useState, useRef, useEffect } from 'react';
-
-// import axios, * as others from 'axios';
-
-// function App() {
-//     const [artists, setArtists] = useState([]);
-
-//     useEffect(() => {
-//         axios.get("http://127.0.0.1:8000//api/v1/artist")
-//             .then((resp) => {
-//                 setArtists(resp.data.artists);
-//             });
-//         },[]);
-    
-//   return (
-//           <div className="row">
-//           <div className="col">
-//           <h2> Artists </h2>
-//           <ol>
-//                           {artists.map(((artist, idx)=><li key={`artist${artist.id}`}>
-//                                         <a 
-//                                         href={`http://127.0.0.1:8000/api/v1/artist/${artist.id}`}
-
-//                                         >{artist.name}
-//                                         </a>
-//                                         </li>))}
-//           </ol>
-//           </div>
-//           <div className="col">
-//           <h2> Tracks </h2>
-//           </div>
-//           <div className="col">
-//           <h2> Lyrics </h2>
-//           </div>
-//           </div>
-//   );
-// }
-
-// export default App;
