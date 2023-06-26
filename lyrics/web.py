@@ -1,14 +1,15 @@
 import time
 
 from flask import Flask, Response, render_template, request, jsonify
-from flask_cors import CORS
+from flask_cors import CORS 
 
 import models
 
 app = Flask("lyrics")
 CORS(app)
 
-
+"""returns a JSON response containing a list of artists 
+retrieved from the database using SQLAlchemy."""
 # API endpoints
 @app.route("/api/v1/artist")
 def api_artists():
@@ -17,6 +18,8 @@ def api_artists():
     ret = [{"id": i.id, "name": i.name} for i in artists]
     return jsonify(dict(artists=ret))
 
+"""retrieves a specific artist from the database and 
+returns a JSON response containing the artist's tracks."""
 
 @app.route("/api/v1/artist/<artist_id>")
 def api_artist(artist_id):
@@ -29,6 +32,8 @@ def api_artist(artist_id):
     ret = [{"id": i.id, "name": i.name} for i in artist.tracks]
     return jsonify(dict(tracks=ret))
 
+"""retrieves a specific track from the database based on the provided song_id and
+returns a JSON response containing the track's name and lyrics."""
 
 @app.route("/api/v1/song/<song_id>")
 def song(song_id):
@@ -41,6 +46,9 @@ def song(song_id):
     # track.lyrics = track.lyrics.replace("\n", "<br/>")
     lyrics = {"name": track.name, "lyrics": track.lyrics}
     return jsonify(lyrics)
+
+
+"""view functions"""
 
 
 @app.route("/")

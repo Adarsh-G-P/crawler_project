@@ -1,5 +1,7 @@
 import logging
 
+
+"""save the lyrics of a given track by an artist to a text file. """
 def save_track(artist, track, lyrics, base="lyrics_crawl"):
     """
     Inputs : 
@@ -29,15 +31,21 @@ def save_track(artist, track, lyrics, base="lyrics_crawl"):
     with open(track_path, "w") as f:
         f.write(lyrics)
     
+"""define a logger named lyrics with logging level of DEBUGG
+create a stream handler with logging level either debug or info depending on value
+"""
 
+"""logging = to include informative messages to track the flow of execution
+useful for  debugging and troubleshooting"""
 def setup_logger(debug):
     l = logging.getLogger("lyrics")
     l.setLevel(logging.DEBUG)
     h = logging.StreamHandler()
     if debug:
         h.setLevel(logging.DEBUG)
-    else:
+    else: 
         h.setLevel(logging.INFO)
+        """use formatter how the messages are displayed"""
     h.setFormatter(logging.Formatter("[%(levelname)s] %(filename)s:%(lineno)d : %(message)s"))
     l.addHandler(h)
     
