@@ -23,7 +23,8 @@ def crawl_artists(data, count=10):
          ("artist name", link to tracks of artist)
 
     Description of what this does:
-      Parses the input HTML, find the list of artists. Creates a list as mentioned in outputs and returns the list
+      bs4 library to Parses the input HTML, search for nodes ,find the list of artists.
+     extract name and links and return as list of tuples
     
     """
     soup = BeautifulSoup(data, features="html.parser") # Create soup
@@ -49,8 +50,11 @@ def crawl_tracks_of_artist(data, count=5):
       ("track name", "lyrics of the song")
 
     Description : 
-      Parses the input HTML to find all the tracks of the artist. Creates a list like mentioned in the output
+      Parses the input HTML to find all the tracks of the artist.
+        Creates a list like mentioned in the output
     
+        
+     extract the track name along with their corresponding lyrics   
     """
     soup = BeautifulSoup(data, features="html.parser")
     tracks = soup.find("table", {"class" : "tracklist"})
@@ -83,6 +87,7 @@ def crawl(start_url, nartists, ntracks):
         tracks_page = requests.get(artist_link).text
         tracks = crawl_tracks_of_artist(tracks_page, ntracks)
         for track_name, lyrics in tracks:
+            """to save db"""
             models.save_track_to_db(artist_name, track_name, lyrics)
 
             logger.debug(" Downloading song %s", track_name)
