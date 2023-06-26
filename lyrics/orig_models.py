@@ -5,6 +5,10 @@ from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import mapped_column
 from sqlalchemy.orm import relationship
 
+"""Base is a subclass of SQLAlchemy's DeclarativeBase class. 
+It serves as a base class for all the model classes and 
+allows them to inherit common functionality provided by SQLAlchemy."""
+
 class Base(DeclarativeBase):
     pass
 

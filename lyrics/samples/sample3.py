@@ -1,5 +1,8 @@
 import sqlalchemy as sa
-
+"""basic database operations using SQLAlchemy. 
+It shows how to establish a connection to the database, 
+execute SQL queries, perform transactions,
+and retrieve data from the database."""
 
 engine = sa.create_engine("postgresql:///students", echo=True)  
 
