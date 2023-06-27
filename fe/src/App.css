@@ -65,13 +65,13 @@ body {
   background-color: olive;
   border-radius: 8px;
   padding: 20px;
-  border: 1px solid #ccc;
+  border: 1px solid black;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .card > * {
   margin-bottom: 10px;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid black;
   padding-bottom: 10px;
 }
 
